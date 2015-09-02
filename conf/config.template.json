@@ -1,0 +1,9 @@
+{
+  "serverAddress": false, // try and derive the address, or
+  "serverAddress": "http://myapp.example.com:8080", // use supplied
+  "twilioAcountDetails": {
+    "accountSid": "account SID",
+    "authToken": "authentication token",
+    "accountNumber": "account number"
+  }
+}

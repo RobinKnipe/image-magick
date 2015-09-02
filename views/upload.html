@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Upload passport image</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script type="text/javascript" src="/lib/jquery.js"></script>
+    <script type="text/javascript" src="/javascripts/fileUpload.js"></script>
+</head>
+<body>
+
+    <h1>Welcome {{name}}</h1>
+
+    <div id="imageUpload">
+
+        <p>Please select a passport image to upload.</p>
+
+        <label for="upload" class="button">Select a file...</label>
+        <input type="file" name="upload" id="upload" style="display: none" />
+
+        <p class="status"></p>
+        <progress></progress>
+
+    </div>
+
+</body>
+</html>

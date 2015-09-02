@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to the passport form</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script type="text/javascript" src="/lib/jquery.js"></script>
+    <script type="text/javascript" src="/lib/primus.js"></script>
+    <script type="text/javascript" src="/javascripts/index.js"></script>
+  </head>
+  <body>
+    <div id="form" />
+      <h1>Welcome to the passport form</h1>
+
+      <p>Please fill in your details below.</p>
+
+      <form method="post">
+
+        <label for="name">Full name</label>
+        <input type="text" name="name" id="name" />
+        <br />
+
+        <label for="number">Mobile phone number</label>
+        <input type="tel" name="number" id="number" />
+        <br />
+
+        <input type="button" name="text" id="text" value="Send text message..." />
+
+        <input type="submit" name="submit" id="submit" value="Continue" disabled />
+
+        <input type="hidden" name="passportFileId" id="passportFileId" />
+
+      </form>
+    </div>
+
+    <div id="image"></div>
+  </body>
+</html>
