@@ -12,6 +12,7 @@
         "after": false,
         "afterEach": false,
         "Primus": true,
+        "QRCode": true,
         "$": true
     },
     "bitwise": true,

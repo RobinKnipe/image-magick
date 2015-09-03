@@ -15,7 +15,7 @@ $(function () {
             if (!!data && (!!data.sessionId || !!data.sessionURL)) { //connected
                 if (!!data.sessionURL) {
                     userData.sessionURL = data.sessionURL;
-                    new QRCode($("#image")[0], data.sessionURL);
+                    new QRCode($('#image')[0], data.sessionURL);
                 }
                 if (!userData.sessionId) {
                     userData.sessionId = data.sessionId;
