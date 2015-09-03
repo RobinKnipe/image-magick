@@ -32,16 +32,20 @@ var generateURL = function generateURL() {
         return getAddress(connections.wlan0);
     }
 
-    throw new Error('Could not get host details!');
+    //throw new Error('Could not get host details!');
 };
 
-function sendSMS(sessionId, number, callback) {
+function getSessionURL(sessionId) {
     if (!url) {
         url = generateURL();
     }
+    return url + '/upload?sessionId=' + sessionId;
+}
+
+function sendSMS(sessionId, number, callback) {
     var text =
         'Please use the following link to upload an image of your passport.\n' +
-        url + '/upload?sessionId=' + sessionId;
+        getSessionURL(sessionId);
     messages.create({
         body: text,
         to: number,
@@ -50,4 +54,7 @@ function sendSMS(sessionId, number, callback) {
 }
 
 
-module.exports.sendSMS = sendSMS;
+module.exports = {
+    getSessionURL: getSessionURL,
+    sendSMS: sendSMS
+};

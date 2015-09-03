@@ -12,7 +12,11 @@ $(function () {
         var connection = Primus.connect();
         connection.on('data', function message(data) {
             console.log('Message from server', data);
-            if (data && data.sessionId) { //connected
+            if (!!data && (!!data.sessionId || !!data.sessionURL)) { //connected
+                if (!!data.sessionURL) {
+                    userData.sessionURL = data.sessionURL;
+                    new QRCode($("#image")[0], data.sessionURL);
+                }
                 if (!userData.sessionId) {
                     userData.sessionId = data.sessionId;
                 }
@@ -22,6 +26,7 @@ $(function () {
             }
             else if (data && data.imagePath) {
                 $('#passportFileId').val(data.imagePath);
+                $('#image img').hide();
                 $('#image').css('backgroundImage', 'url(\''+data.imagePath+'\')');
                 $('#sumbit').disabled=false;
             }

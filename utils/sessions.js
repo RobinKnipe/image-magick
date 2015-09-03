@@ -17,12 +17,26 @@ function Session(connection) {
     this.connection = connection;
     this.sentMessage = false;
 
+    var handleConnection = function (data, fn) {
+        if (!data.sessionId) {
+            fn();
+        }
+        else {
+            this.sessionId = data.sessionId;
+            sessions[this.sessionId] = this;
+        }
+    }.bind(this);
+
     var processData = function (data) {
-        if (data && data.name && data.number) {
+        if (data && data.name) {
             this.name = data.name;
+        }
+        if (data && data.number) {
             this.number = data.number;
-            if (!data.sessionId) {
-                this.connection.write(this.sessionId);
+            handleConnection(data, function () {
+                this.connection.write({
+                    sessionId: this.sessionId
+                });
                 sms.sendSMS(this.sessionId, this.number, function (err, result) {
                     if (err) {
                         console.trace(err);
@@ -30,18 +44,16 @@ function Session(connection) {
                     else {
                         this.sentMessage = result;
                     }
-                });
-            }
-            else {
-                this.sessionId = data.sessionId;
-                sessions[this.sessionId] = this;
-            }
+                }.bind(this));
+            }.bind(this));
         }
         else {
-            console.error('Received garbage from client');
-            console.dir(data);
-            this.connection.write('Unexpected request received');
-            this.connection.write(data);
+            handleConnection(data, function () {
+                this.connection.write({
+                    sessionId: this.sessionId,
+                    sessionURL: sms.getSessionURL(this.sessionId)
+                });
+            }.bind(this));
         }
     }.bind(this);
     connection.on('data', processData);
