@@ -58,7 +58,7 @@ describe('SMS functions', function() {
     describe('#sendSMS', function() {
 
         it('should send a text message', function(done) {
-            sms.sendSMS(123, '+447919386828', function(err, response) {
+            sms.sendSMS(123, '+447000000000', function(err, response) {
                 if (!err) {
                     expect(response).to.be.a('object');
                     expect(response).not.to.be.empty();
