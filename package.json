@@ -16,7 +16,7 @@
     "multer": "^1.0.3",
     "primus": "^3.2.1",
     "serve-favicon": "~2.3.0",
-    "twilio": "^2.3.0"
+    "twilio": "^3.17.1"
   },
   "devDependencies": {
     "chai": "^3.2.0",
