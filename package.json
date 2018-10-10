@@ -14,7 +14,7 @@
     "hjs": "~0.0.6",
     "morgan": "~1.6.1",
     "multer": "^1.0.3",
-    "primus": "^3.2.1",
+    "primus": "^7.2.3",
     "serve-favicon": "~2.3.0",
     "twilio": "^2.3.0"
   },
