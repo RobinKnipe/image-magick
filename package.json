@@ -12,7 +12,7 @@
     "engine.io": "^1.5.2",
     "express": "~4.13.1",
     "hjs": "~0.0.6",
-    "morgan": "~1.6.1",
+    "morgan": "~1.9.1",
     "multer": "^1.0.3",
     "primus": "^3.2.1",
     "serve-favicon": "~2.3.0",
